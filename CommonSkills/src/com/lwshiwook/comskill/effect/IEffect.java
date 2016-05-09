@@ -1,27 +1,28 @@
 package com.lwshiwook.comskill.effect;
 
 import java.util.List;
-import org.gof.demo.battlesrv.stageObj.UnitObject;
+
+import com.lwshiwook.comskill.battle.IBattleAgent;
+import com.lwshiwook.comskill.battle.IGameUnit;
 
 public abstract class IEffect {
 	
 	public void doEffectToTarget(IBattleAgent ba) {
-		List<UnitObject> targets = aimTarget(ba);
-		targets.forEach(c -> doEffect(c));
+		ba.aimTarget().forEach(c -> doEffect(c));
 	}
 
 	public void recoverEffect(IBattleAgent ba){
 		long effectUid = getUid();
-		List<UnitObject> effected = ba.findEffected(effectUid);
+		List<IGameUnit> effected = ba.findEffected(effectUid);
 		effected.forEach(c -> recover(c));
 	}
 
-	abstract List<UnitObject> aimTarget(IBattleAgent ba);
-
-	abstract void doEffect(UnitObject target);
+	protected abstract void doEffect(IGameUnit target);
 	
-	abstract void recover(UnitObject target);
+	protected abstract void recover(IGameUnit target);
 	
-	abstract long getUid();
+	protected abstract long getUid();
+	
+	public abstract int getPriority();
 
 }

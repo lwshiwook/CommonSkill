@@ -1,7 +1,7 @@
 package com.lwshiwook.comskill.main;
 
 
-import com.lwshiwook.comskill.effect.IBattleAgent;
+import com.lwshiwook.comskill.battle.IBattleAgent;
 import com.lwshiwook.comskill.support.SkillConfig;
 
 public class ActiveSkill extends Skill {
@@ -11,7 +11,7 @@ public class ActiveSkill extends Skill {
 	}
 	
 	public void cast(IBattleAgent ba){
-		effects.forEach(c -> {
+		getEffects().forEach(c -> {
 			c.doEffectToTarget(ba);
 		});
 	}
