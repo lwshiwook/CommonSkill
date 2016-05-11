@@ -18,7 +18,7 @@ public class DamageEffect extends IEffect {
 
 	@Override
 	protected void doEffect(IGameUnit target) {
-		target.doDamage(damage);
+		target.beingHit(damage);
 	}
 
 	@Override

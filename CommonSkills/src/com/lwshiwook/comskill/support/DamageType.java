@@ -4,7 +4,8 @@ public enum DamageType {
 	
 	PHY_DAMAGE("物理伤害"),
 	SPL_DAMAGE("魔法伤害"),
-	TRU_DAMAGE("真实伤害");
+	TRU_DAMAGE("真实伤害"),
+	HEALING("治疗量");
 	
 	private String tip;
 	

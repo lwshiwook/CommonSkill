@@ -8,7 +8,7 @@ import com.lwshiwook.comskill.battle.IGameUnit;
 public abstract class IEffect {
 	
 	public void doEffectToTarget(IBattleAgent ba) {
-		ba.aimTarget().forEach(c -> doEffect(c));
+		ba.aimTarget(this).forEach(c -> doEffect(c));
 	}
 
 	public void recoverEffect(IBattleAgent ba){
