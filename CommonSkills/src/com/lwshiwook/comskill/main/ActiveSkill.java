@@ -15,4 +15,14 @@ public class ActiveSkill extends Skill {
 			c.doEffectToTarget(ba);
 		});
 	}
+
+	@Override
+	public void updatePulse() {
+		
+	}
+
+	@Override
+	public void build(SkillConfig config, Object... param) {
+		
+	}
 }

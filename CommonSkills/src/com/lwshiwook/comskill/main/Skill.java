@@ -7,7 +7,8 @@ import com.lwshiwook.comskill.support.SkillConfig;
 
 public abstract class Skill {
 
-	private List<IEffect> effects;
+	protected List<IEffect> effects;
+	protected SkillConfig config;
 	
 	public List<IEffect> getEffects() {
 		return effects;
@@ -17,9 +18,16 @@ public abstract class Skill {
 		effects.sort((a,b) -> {
 			return a.getPriority() - b.getPriority();
 		});
-		
 		this.effects = effects;
 	}
+	/**
+	 * 更新方法
+	 */
+	public abstract void updatePulse();
+	/**
+	 * 组装方法
+	 */
+	public abstract void build(SkillConfig config, Object... param);
+	
 
-	protected SkillConfig config;
 }
