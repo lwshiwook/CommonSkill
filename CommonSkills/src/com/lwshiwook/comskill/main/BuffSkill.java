@@ -9,6 +9,8 @@ public class BuffSkill extends Skill {
 	private long timeDuring; //buff持续时间
 	private int isDispelable; //是否可驱散
 	
+	private BuffSkill(){}
+	
 	public long getTimeLeft(long timeNow) {
 		return timeDuring - (timeNow - createTime);
 	}
@@ -19,10 +21,6 @@ public class BuffSkill extends Skill {
 
 	public void setIsDispelable(int isDispelable) {
 		this.isDispelable = isDispelable;
-	}
-
-	public BuffSkill(SkillConfig conf) {
-		this.config = conf;
 	}
 	
 	public void apply(IBattleAgent ba){

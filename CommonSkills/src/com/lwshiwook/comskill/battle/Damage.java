@@ -3,7 +3,7 @@ package com.lwshiwook.comskill.battle;
 import com.lwshiwook.comskill.support.DamageType;
 
 /**
- * 伤害包，治疗也是他
+ * 伤害
  * @author liwei
  *
  */
