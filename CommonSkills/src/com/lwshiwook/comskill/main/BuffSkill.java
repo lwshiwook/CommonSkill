@@ -1,6 +1,10 @@
 package com.lwshiwook.comskill.main;
 
+import java.util.List;
+
 import com.lwshiwook.comskill.battle.IBattleAgent;
+import com.lwshiwook.comskill.battle.IGameUnit;
+import com.lwshiwook.comskill.effect.IEffect;
 import com.lwshiwook.comskill.support.SkillConfig;
 
 public class BuffSkill extends Skill {
@@ -23,15 +27,18 @@ public class BuffSkill extends Skill {
 		this.isDispelable = isDispelable;
 	}
 	
-	public void apply(IBattleAgent ba){
+	public void apply(){
 		effects.forEach(c -> {
-			c.doEffectToTarget(ba);
+			c.doEffect(aimTarget(c));
 		});
 	}
 	
 	public void dispel(IBattleAgent ba){
+		
 		effects.forEach(c -> {
-			c.recoverEffect(ba);
+			long effectUid = c.getUid();
+			List<IGameUnit> effected = findEffected(effectUid);
+			c.recover(effected);
 		});
 	}
 
@@ -43,6 +50,18 @@ public class BuffSkill extends Skill {
 	@Override
 	public void build(SkillConfig config, Object... param) {
 		
+	}
+
+	@Override
+	public List<IGameUnit> findEffected(long effectUid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<IGameUnit> aimTarget(IEffect effect) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

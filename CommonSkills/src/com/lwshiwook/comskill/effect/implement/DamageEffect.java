@@ -1,10 +1,12 @@
 package com.lwshiwook.comskill.effect.implement;
 
-import com.lwshiwook.comskill.battle.Damage;
+import java.util.List;
+
 import com.lwshiwook.comskill.battle.IGameUnit;
+import com.lwshiwook.comskill.battle.pack.Damage;
 import com.lwshiwook.comskill.effect.IEffect;
 
-public class DamageEffect extends IEffect {
+public class DamageEffect implements IEffect {
 	
 	private Damage damage;
 
@@ -17,17 +19,18 @@ public class DamageEffect extends IEffect {
 	}
 
 	@Override
-	protected void doEffect(IGameUnit target) {
-		target.beingHit(damage);
+	public void doEffect(List<IGameUnit> targets) {
+		targets.forEach(c -> c.beingHit(damage));
+		
 	}
 
 	@Override
-	protected void recover(IGameUnit target) {
-		//do nothing
+	public void recover(List<IGameUnit> targets) {
+		// do nothing
 	}
 
 	@Override
-	protected long getUid() {
+	public long getUid() {
 		return 0;
 	}
 
@@ -35,6 +38,9 @@ public class DamageEffect extends IEffect {
 	public int getPriority() {
 		return 0;
 	}
+
+
+	
 
 
 }

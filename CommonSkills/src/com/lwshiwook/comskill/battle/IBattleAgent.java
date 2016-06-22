@@ -1,40 +1,36 @@
 package com.lwshiwook.comskill.battle;
 
-import java.util.ArrayList;
-import java.util.List;
-import com.lwshiwook.comskill.effect.IEffect;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+import com.lwshiwook.comskill.battle.pack.Damage;
+import com.lwshiwook.comskill.battle.pack.IAtkPack;
 
 /**
- * 职能  关键帧发消息 选择目标 战场信息
+ * 职能 关键帧发消息 战场信息
+ * 
  * @author Wayne
  *
  */
 public abstract class IBattleAgent {
 
-	public abstract List<IGameUnit> findEffected(long effectUid);
-	
-	public abstract List<IGameUnit> aimTarget(IEffect effect);
-	
-	public abstract void sendAtkPack(IAtkPack pack);
+	protected IGameUnit unit;
 
-	protected List<IAtkPack> packQ = new ArrayList<>();
-	
+	public abstract void sendAtkPack(IGameUnit unit, IAtkPack pack);
+
+	protected ConcurrentLinkedQueue<IAtkPack> packQ = new ConcurrentLinkedQueue<>();
+
 	/**
 	 * 更新方法
 	 */
-	public void updateImpulse(){
-		long nowTime = System.currentTimeMillis();
-		packQ.forEach(c -> {
-			if(c.engage(nowTime)){
-				sendAtkPack(c);
-			}
-		});
+	public void updateImpulse() {
+		IAtkPack pack = null;
+		while( null!=(pack = packQ.poll())){
+			sendAtkPack(unit, pack);
+		}
 	}
 
-	public synchronized void addPack(Damage damage) {
-		
+	public void addPack(Damage damage) {
+		packQ.add(damage);
 	}
-	
-	
 
 }

@@ -1,5 +1,7 @@
 package com.lwshiwook.comskill.battle;
 
+import com.lwshiwook.comskill.battle.pack.Damage;
+
 public abstract class IGameUnit {
 	
 	private IBattleAgent agent;

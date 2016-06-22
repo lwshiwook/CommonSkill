@@ -2,6 +2,7 @@ package com.lwshiwook.comskill.main;
 
 import java.util.List;
 
+import com.lwshiwook.comskill.battle.IGameUnit;
 import com.lwshiwook.comskill.effect.IEffect;
 import com.lwshiwook.comskill.support.SkillConfig;
 
@@ -28,6 +29,19 @@ public abstract class Skill {
 	 * 组装方法
 	 */
 	public abstract void build(SkillConfig config, Object... param);
+	/**
+	 * 找受影响的目标
+	 * @param effectUid
+	 * @return
+	 */
+	public abstract List<IGameUnit> findEffected(long effectUid);
+	
+	/**
+	 * 选择目标
+	 * @param effect
+	 * @return
+	 */
+	public abstract List<IGameUnit> aimTarget(IEffect effect);
 	
 
 }
