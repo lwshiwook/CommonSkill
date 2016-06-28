@@ -1,0 +1,6 @@
+package com.lwshiwook.comskill.battle.pack;
+
+public interface IAtkPack {
+	
+
+}
